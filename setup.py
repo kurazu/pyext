@@ -1,9 +1,10 @@
 from setuptools import find_packages, setup, Extension
 
-basic = Extension(
-    'basic',
-    sources=['src/basic_mod/basic.c'],
-)
+basic = Extension('basic', sources=['src/basic_mod/basic.c'])
+
+utf = Extension('utf', sources=['src/utf_mod/utf.c'])
+
+param = Extension('param', sources=['src/param_mod/param.c'])
 
 
 setup(
@@ -21,7 +22,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
     ],
-    ext_modules=[basic],
+    ext_modules=[basic, utf, param],
     packages=find_packages('src', exclude=['tests']),
     package_dir={'': 'src'},
     include_package_data=False,
