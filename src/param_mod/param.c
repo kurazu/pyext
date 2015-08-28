@@ -9,7 +9,7 @@ param_hello(PyObject *self, PyObject * args)
     if (!PyArg_ParseTuple(args, "sI", &name, &age)) {
         return NULL;
     }
-    const char * text;
+    char * text;
     static const char * format = "Hello %s age %u!";
     if (asprintf(&text, format, name, age) < 0) {
         PyErr_SetString(PyExc_RuntimeError, "Cannot format output");
