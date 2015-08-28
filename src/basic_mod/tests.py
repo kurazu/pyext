@@ -1,11 +1,9 @@
-import unittest
+import base_tests
 
 
-class BasicTest(unittest.TestCase):
+class BasicTest(base_tests.BaseTestCase):
 
-    def setUp(self):
-        import basic
-        self.module = basic
+    module_name = 'basic'
 
     def test_basic(self):
         self.assertEqual(self.module.hello(), "Hello world")

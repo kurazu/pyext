@@ -1,12 +1,9 @@
-import unittest
-import contextlib
+import base_tests
 
 
-class ParamTest(unittest.TestCase):
+class ParamTest(base_tests.BaseTestCase):
 
-    def setUp(self):
-        import param
-        self.module = param
+    module_name = 'param'
 
     def test_basic(self):
         self.assertEqual(
@@ -16,7 +13,7 @@ class ParamTest(unittest.TestCase):
 
     def test_outside_unsigned(self):
         self.assertEqual(
-            self.module.hello("Grzegorz", -3), "Hello Grzegorz age -3"
+            self.module.hello("Grzegorz", -3), "Hello Grzegorz age 4294967293!"
         )
 
     def test_long_unsigned(self):
@@ -25,16 +22,8 @@ class ParamTest(unittest.TestCase):
                 "Roksana",
                 999999999999999999999999999999999999999999999999999999999999999
             ),
-            "Hello Roksana age "
-            "999999999999999999999999999999999999999999999999999999999999999"
+            "Hello Roksana age 4294967295!"
         )
-
-    @contextlib.contextmanager
-    def assertRaisesArg(self, exc_class, expected_arg):
-        with self.assertRaises(TypeError) as ar:
-            yield
-        arg, = ar.exception.args
-        self.assertEqual(arg, expected_arg)
 
     def test_wrong_params_1(self):
         with self.assertRaisesArg(

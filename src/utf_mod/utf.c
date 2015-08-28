@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 static PyObject *
-utf_hello(PyObject *self, PyObject * args)
+utf_hello(PyObject * self, PyObject * args)
 {
     const char * text;
     if (!PyArg_ParseTuple(args, "s", &text)) {
@@ -28,8 +28,20 @@ utf_hello(PyObject *self, PyObject * args)
     return result;
 }
 
+static PyObject *
+utf_len(PyObject * self, PyObject * args)
+{
+    const char * text;
+    if (!PyArg_ParseTuple(args, "s", &text)) {
+        return NULL;
+    }
+    const int len = strlen(text);
+    return PyLong_FromLong(len);
+}
+
 static PyMethodDef utf_methods[] = {
     {"hello",  utf_hello, METH_VARARGS, "Say hello."},
+    {"len",  utf_len, METH_VARARGS, "Count bytes."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
