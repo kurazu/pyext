@@ -4,7 +4,7 @@
 
 static PyObject *NativeError;
 
-/* Structure of JSFunc Python objects */
+/* Structure of Native Python objects */
 typedef struct {
     // Required header fields
     PyObject_HEAD
