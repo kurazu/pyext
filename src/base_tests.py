@@ -11,7 +11,7 @@ class BaseTestCase(unittest.TestCase):
 
     @contextlib.contextmanager
     def assertRaisesArg(self, exc_class, expected_arg):
-        with self.assertRaises(TypeError) as ar:
+        with self.assertRaises(exc_class) as ar:
             yield
         arg, = ar.exception.args
         self.assertEqual(arg, expected_arg)

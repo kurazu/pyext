@@ -6,6 +6,8 @@ utf = Extension('utf', sources=['src/utf_mod/utf.c'])
 
 param = Extension('param', sources=['src/param_mod/param.c'])
 
+key = Extension('key', sources=['src/key_mod/key.c'])
+
 
 setup(
     name='pyext',
@@ -22,7 +24,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
     ],
-    ext_modules=[basic, utf, param],
+    ext_modules=[basic, utf, param, key],
     packages=find_packages('src', exclude=['tests']),
     package_dir={'': 'src'},
     include_package_data=False,
