@@ -12,6 +12,7 @@ class ObjTest(base_tests.BaseTestCase):
         self.NativeError = self.module.NativeError
         self.assertTrue(inspect.isclass(self.Native))
         self.assertTrue(inspect.isclass(self.NativeError))
+        self.assertTrue(issubclass(self.NativeError, ValueError))
 
     def test_init_exc(self):
         with self.assertRaisesArg(
