@@ -10,6 +10,8 @@ key = Extension('key', sources=['src/key_mod/key.c'])
 
 gil = Extension('gil', sources=['src/gil_mod/gil.c'])
 
+obj = Extension('obj', sources=['src/obj_mod/obj.c'])
+
 
 setup(
     name='pyext',
@@ -26,7 +28,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
     ],
-    ext_modules=[basic, utf, param, key, gil],
+    ext_modules=[basic, utf, param, key, gil, obj],
     packages=find_packages('src', exclude=['tests']),
     package_dir={'': 'src'},
     include_package_data=False,

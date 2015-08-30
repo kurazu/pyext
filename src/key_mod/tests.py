@@ -1,7 +1,7 @@
 import base_tests
 
 
-class ParamTest(base_tests.BaseTestCase):
+class KeyTest(base_tests.BaseTestCase):
 
     module_name = 'key'
 
