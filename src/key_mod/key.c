@@ -1,5 +1,4 @@
 #include <Python.h>
-#include <stdio.h>
 
 static PyObject *
 key_belongs(PyObject *self, PyObject * args, PyObject * kwargs)
@@ -18,16 +17,15 @@ key_belongs(PyObject *self, PyObject * args, PyObject * kwargs)
     )) {
         return NULL;
     }
+    /* GetItem returns a new reference that needs to be decremented */
     PyObject * category_sequence = PyObject_GetItem(mapping, category);
     if (category_sequence == NULL) {
-        //PyErr_SetString(PyExc_TypeError, "Couldn't get items in category");
         return NULL;
     }
 
     int contains = PySequence_Contains(category_sequence, item);
     Py_DECREF(category_sequence);
     if (contains == -1) {
-        // TODO
         return NULL;
     }
 
