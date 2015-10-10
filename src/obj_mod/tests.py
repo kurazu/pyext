@@ -70,3 +70,10 @@ class ObjTest(base_tests.BaseTestCase):
             native.summary()
 
         del native
+
+    def test_create(self):
+        native = self.module.create()
+        self.assertIsInstance(native, self.Native)
+        self.assertEqual(native.name, 'Bill')
+        self.assertEqual(native.number, 7)
+        self.assertEqual(native.pointer, 'YES')

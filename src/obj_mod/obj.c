@@ -148,8 +148,58 @@ static PyTypeObject NativeType = {
     Native_new,                /* tp_new */
 };
 
+static PyObject *
+obj_create(PyObject *self)
+{
+    int added;
+    PyObject * args = PyTuple_New(3);
+    if (args == NULL) {
+        return NULL;
+    }
+    PyObject * name = PyUnicode_FromString("Bill");
+    if (name == NULL) {
+        Py_DECREF(args);
+        return NULL;
+    }
+    added = PyTuple_SetItem(args, 0, name);
+    // PyTuple_SetItem is an exception and it steals the reference, even if it fails.
+    // We will not have to DECREF name anymore.
+    if (added != 0) {
+        Py_DECREF(args);
+        return NULL;
+    }
+    PyObject * number = PyLong_FromLong(7);
+    if (number == NULL) {
+        Py_DECREF(args);
+        return NULL;
+    }
+    added = PyTuple_SetItem(args, 1, number);
+    // We will not have to DECREF number anymore.
+    if (added != 0) {
+        Py_DECREF(args);
+        return NULL;
+    }
+    PyObject * yes = Py_True;
+    Py_INCREF(yes);
+    added = PyTuple_SetItem(args, 2, yes);
+    // We will not have to DECREF yes anymore.
+    if (added != 0) {
+        Py_DECREF(args);
+        return NULL;
+    }
+
+    PyObject * kwargs = NULL;
+    PyObject * result = PyObject_Call((PyObject *) &NativeType, args, kwargs);
+    Py_DECREF(args);
+    if (result == NULL) {
+        return NULL;
+    }
+    return result;
+}
+
 static PyMethodDef obj_methods[] = {
     /* no module-level functions. */
+    {"create", (PyCFunction)obj_create, METH_NOARGS, "Return an obj."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 

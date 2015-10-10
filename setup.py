@@ -16,13 +16,12 @@ gil = Extension('gil', sources=['src/gil_mod/gil.c'])
 obj = Extension('obj', sources=['src/obj_mod/obj.c'])
 
 boost = Extension(
-    'boost',
-    sources=['src/boost_mod/boost.cpp'],
-    include_dirs=[os.path.join(BOOST_DIR, 'include')],
-    libraries=["boost_python"],
-    library_dirs=[os.path.join(BOOST_DIR, 'lib')],
+     'boost',
+     sources=['src/boost_mod/boost.cpp'],
+     include_dirs=[os.path.join(BOOST_DIR, 'include')],
+     libraries=["boost_python"],
+     library_dirs=[os.path.join(BOOST_DIR, 'lib')],
 )
-
 
 setup(
     name='pyext',

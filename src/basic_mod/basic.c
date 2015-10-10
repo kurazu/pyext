@@ -21,6 +21,10 @@ static struct PyModuleDef basic_module = {
    basic_methods
 };
 
+int add(int a, int b) {
+    return a + b;
+}
+
 PyMODINIT_FUNC
 PyInit_basic(void)
 {
