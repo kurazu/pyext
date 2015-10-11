@@ -15,6 +15,8 @@ gil = Extension('gil', sources=['src/gil_mod/gil.c'])
 
 obj = Extension('obj', sources=['src/obj_mod/obj.c'])
 
+cpp = Extension('cpp', sources=['src/cpp_mod/cpp.cpp'])
+
 boost = Extension(
      'boost',
      sources=['src/boost_mod/boost.cpp'],
@@ -38,7 +40,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
     ],
-    ext_modules=[basic, utf, param, key, gil, obj, boost],
+    ext_modules=[basic, utf, param, key, gil, obj, cpp, boost],
     packages=find_packages('src', exclude=['tests']),
     package_dir={'': 'src'},
     include_package_data=False,

@@ -21,7 +21,7 @@ param_hello(PyObject *self, PyObject * args)
 }
 
 static PyMethodDef param_methods[] = {
-    {"hello",  param_hello, METH_VARARGS, "Say hello."},
+    {"hello", param_hello, METH_VARARGS, "Say hello."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 
